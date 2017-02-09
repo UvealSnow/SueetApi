@@ -15,8 +15,8 @@ class Employee extends Model
 		return $this->belongsTo('App\Organisation');
 	}
 
-	public function role () {
-		return $this->belongsToMany('App\Role');
+	public function roles () {
+		return $this->belongsToMany('App\Role')->withPivot('estate_id');
 	}
 
 	public function user () {

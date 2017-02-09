@@ -4,9 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Section extends Model
-{
+class Section extends Model {
     
+    protected $guarded = [];
+
 	public function amenities () {
 		return $this->hasMany('App\Amenity');
 	}
@@ -17,6 +18,10 @@ class Section extends Model
 
 	public function manager () {
 		return $this->belongsTo('App\User', 'manager_id');
+	}
+
+	public function picture () {
+		return $this->morphOne('App\Picture', 'picturable');
 	}
 
 	public function units () {

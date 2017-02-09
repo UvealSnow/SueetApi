@@ -27,8 +27,12 @@ class Unit extends Model
 		return $this->hasMany('App\Pet');
 	}
 
-	public function sections () {
-		return $this->hasMany('App\Employee');
+	public function residents () {
+		return $this->belongsToMany('App\Resident');
+	}
+
+	public function section () {
+		return $this->belongsTo('App\Section');
 	}
 
 	public function vehicles () {

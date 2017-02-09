@@ -4,8 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Estate extends Model
-{
+class Estate extends Model {
+
+	protected $guarded = [];
     
 	public function amenities () {
 		return $this->hasMany('App\Amenity');
@@ -43,6 +44,10 @@ class Estate extends Model
 		return $this->belongsTo('App\Organisation');
 	}
 
+	public function picture () {
+		return $this->morphOne('App\Picture', 'picturable');
+	}
+
 	public function posts () {
 		return $this->hasMany('App\Post');
 	}
@@ -53,6 +58,21 @@ class Estate extends Model
 
 	public function sections () {
 		return $this->hasMany('App\Section');
+	}
+
+	public function units () {
+		return $this->hasManyThrough('App\Unit', 'App\Section');
+	}
+
+	public static function boot () {
+		parent::boot();
+
+		static::deleting(function(Estate $estate) {
+			// $estate->amenities()->delete();
+			$estate->employees()->detach();
+			$estate->residents()->delete();
+			$estate->sections()->delete();
+		});
 	}
 
 }

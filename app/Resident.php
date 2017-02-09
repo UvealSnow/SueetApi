@@ -11,7 +11,7 @@ class Resident extends Model
 		return $this->belongsTo('App\Estate');
 	}
 
-	public function unit () {
+	public function units () {
 		return $this->belongsToMany('App\Unit');
 	}
 
