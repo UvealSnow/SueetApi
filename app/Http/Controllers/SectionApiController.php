@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Estate;
 use App\Section;
 
-class SectionController extends Controller {
+class SectionApiController extends Controller {
     
         public function __construct () {
         $this->middleware('auth:api');
@@ -51,23 +51,22 @@ class SectionController extends Controller {
 
     }
 
-    public function show($estate_id, $id) {
+    public function show($id) {
         
         $user = Auth::user();
-        $estate = Estate::findOrFail($estate_id);
+        // $estate = Estate::findOrFail($estate_id);
         $section = Section::findOrFail($id);
 
-        if ($user->can('view', $estate, $section)) {
+        if ($user->can('view', $section)) {
             return $section;
         }
         return response ('Not authorized', 401);
 
     }
 
-    public function update(Request $request, $estate_id, $id) {
+    public function update(Request $request, $id) {
         
         $user = Auth::user();
-        $estate = Estate::findOrFail($estate_id);
         $section = Section::findOrFail($id);
 
         $this->validate($request, [
@@ -76,12 +75,12 @@ class SectionController extends Controller {
             'img' => 'image|max:2048',
         ]);
 
-        if ($user->can('update', $estate, $section)) {
+        if ($user->can('update', $section)) {
             $section->manager_id = $request->manager_id;
             $section->name = $request->name;
             if ($request->img != null) {
                 Storage::delete($section->img);
-                $section->img = $request->file('img')->store("public/estates/$estate_id/sections");
+                $section->img = $request->file('img')->store("public/sections/$section->id");
             }
             $section->save();
         }
@@ -89,13 +88,12 @@ class SectionController extends Controller {
 
     }
 
-    public function destroy($estate_id, $id) {
+    public function destroy($id) {
         
         $user = Auth::user();
-        $estate = Estate::findOrFail($estate_id);
         $section = Section::findOrFail($id);
 
-        if ($user->can('delete', $estate, $section)) {
+        if ($user->can('delete', $section)) {
             $section->delete();
             return response ('Deleted', 200);
         }

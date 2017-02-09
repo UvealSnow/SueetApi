@@ -4,8 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Employee extends Model
-{
+class Employee extends Model {
     
 	public function estates () {
 		return $this->belongsToMany('App\Estate');

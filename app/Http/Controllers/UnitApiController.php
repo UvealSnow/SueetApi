@@ -15,6 +15,8 @@ class UnitApiController extends Controller {
     public function __construct () {
         $this->middleware('auth:api');
     }
+
+    # Currently not in use
     public function index($estate_id, $section_id) {
 
         $user = Auth::user();
@@ -27,6 +29,24 @@ class UnitApiController extends Controller {
 
         return response ('Not authorized', 401);
         
+    }
+
+    public function estateIndex ($estate_id) {
+        $user = Auth::user();
+        if ($user->can('estate_all', Unit::class)) {
+            $estate = Estate::findOrFail($estate_id);
+            return $estate->units;
+        }
+        return response ('Not authorized', 401);
+    }
+
+    public function estateSection ($section_id) {
+        $user = Auth::user();
+        if ($user->can('section_all', Unit::class)) {
+            $section = \App\Section::findOrFail($section_id);
+            return $section->units;
+        }
+        return response ('Not authorized', 401);
     }
 
     public function store(Request $request, $estate_id, $section_id) {
@@ -56,11 +76,9 @@ class UnitApiController extends Controller {
 
     }
 
-    public function show($estate_id, $section_id, $id) {
+    public function show($id) {
         
         $user = Auth::user();
-        $estate = Estate::findOrFail($estate_id);
-        $section = Section::findOrFail($section_id);
         $unit = Unit::findOrFail($id);
 
         if ($user->can('view', $unit)) {
@@ -71,11 +89,9 @@ class UnitApiController extends Controller {
 
     }
 
-    public function update(Request $request, $estate_id, $section_id, $id) {
+    public function update(Request $request, $id) {
         
         $user = Auth::user();
-        $estate = Estate::findOrFail($estate_id);
-        $section = Section::findOrFail($section_id);
         $unit = Unit::findOrFail($id);
 
         if ($user->can('update', $unit)) {
@@ -85,7 +101,6 @@ class UnitApiController extends Controller {
                 'status' => 'required|string',
             ]);
 
-            $unit = new Unit;
             $unit->section_id = $section_id;
             $unit->number = $request->number;
             $unit->balance = 0;
@@ -99,17 +114,9 @@ class UnitApiController extends Controller {
 
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id) {
         
         $user = Auth::user();
-        $estate = Estate::findOrFail($estate_id);
-        $section = Section::findOrFail($section_id);
         $unit = Unit::findOrFail($id);
 
         if ($user->can('delete', $unit)) {

@@ -45,7 +45,7 @@ class Estate extends Model {
 	}
 
 	public function picture () {
-		return $this->morphOne('App\Picture', 'picturable');
+		return $this->morphOne('App\Picture', 'pictureable');
 	}
 
 	public function posts () {

@@ -8,12 +8,15 @@ use App\Estate;
 use App\Section;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class UnitPolicy
-{
+class UnitPolicy {
     use HandlesAuthorization;
 
-    public function view_all (User $user, Estate $estate, Section $section) {
-        if ($user->)
+    public function estate_all (User $user) {
+        return true;
+    }
+
+    public function section_all (User $user) {
+        return true;
     }
 
     /**
@@ -24,7 +27,7 @@ class UnitPolicy
      * @return mixed
      */
     public function view(User $user, Unit $unit) {
-        //
+        return true;
     }
 
     /**
@@ -47,7 +50,7 @@ class UnitPolicy
      */
     public function update(User $user, Unit $unit)
     {
-        //
+        return true;
     }
 
     /**
@@ -59,6 +62,6 @@ class UnitPolicy
      */
     public function delete(User $user, Unit $unit)
     {
-        //
+        return true;
     }
 }

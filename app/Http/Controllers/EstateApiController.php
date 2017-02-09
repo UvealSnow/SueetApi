@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Estate;
 use App\Section;
 
-class EstateController extends Controller {
+class EstateApiController extends Controller {
     
     public function __construct () {
         $this->middleware('auth:api');
@@ -16,18 +16,9 @@ class EstateController extends Controller {
 
     public function index () {
         $user = Auth::user();
-
         if ($user->can('view_all', Estate::class)) {
-            if ($user->organisation) {
-                $organisation = $user->organisation;
-                $organisation->estates;
-                return $organisation;
-            }
-            elseif ($user->employee) {
-                $organisation = $user->employee->organisation;
-                $organisation->estates;
-                return $organisation;
-            }
+            if ($user->organisation)  return ['estates' => $user->organisation->estates];
+            elseif ($user->employee)  return ['estates' => $user->employee->organisation->estates];
         }
         return response('Not Authorized', 401);
     }

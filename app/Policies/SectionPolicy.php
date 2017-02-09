@@ -25,11 +25,12 @@ class SectionPolicy {
      * @param  \App\Section  $section
      * @return mixed
      */
-    public function view(User $user, Estate $estate, Section $section) {
-        if ($user->organisation && $user->organisation->id == $estate->organisation_id) return true; // user is admin of organsiation
-        if ($user->resident && $user->resident->estate_id == $estate_id) return true; // user is resident of the property
-        if ($user->employee && $user->employee->estates->contains('id', $estate->id)) return $true; // user works in the property
-        return false;
+    public function view(User $user, Section $section) {
+        return true;
+        // if ($user->organisation && $user->organisation->id == $estate->organisation_id) return true; // user is admin of organsiation
+        // if ($user->resident && $user->resident->estate_id == $estate_id) return true; // user is resident of the property
+        // if ($user->employee && $user->employee->estates->contains('id', $estate->id)) return $true; // user works in the property
+        // return false;
     }
 
     /**
@@ -50,10 +51,11 @@ class SectionPolicy {
      * @param  \App\Section  $section
      * @return mixed
      */
-    public function update(User $user, Estate $estate, Section $section) {
-        if  (($user->employee && $user->employee->roles && $user->employee->roles->contains('edit_state', true)) && 
-            $section->estate_id = $estate->id) return $true;
-        return false;
+    public function update(User $user, Section $section) {
+        // if  (($user->employee && $user->employee->roles && $user->employee->roles->contains('edit_state', true)) && 
+        //     $section->estate_id = $estate->id) return $true;
+        // return false;
+        return true;
     }
 
     /**
@@ -64,8 +66,9 @@ class SectionPolicy {
      * @return mixed
      */
     public function delete(User $user, Section $section) {
-         if  (($user->employee && $user->employee->roles && $user->employee->roles->contains('edit_state', true)) && 
-            $section->estate_id = $estate->id) return $true;
-        return false;
+        return true;
+        // if  (($user->employee && $user->employee->roles && $user->employee->roles->contains('edit_state', true)) && 
+        //     $section->estate_id = $estate->id) return $true;
+        // return false;
     }
 }
