@@ -18,10 +18,10 @@
 		Route::get('estate/{estate_id}/section', 'SectionApiController@index'); # Gets all the sections from given estate
 		Route::get('estate/{estate_id}/unit', 'UnitApiController@estateIndex'); # Gets all the units from given estate
 		Route::get('estate/{estate_id}/employee', 'TodoApiController@todo'); # (to do) Gets all the employees fom given estate
- 		Route::get('estate/{estate_id}/resident', 'TodoApiController@todo'); # to do) Gets all the employees fom given estate
+ 		Route::get('estate/{estate_id}/resident', 'TodoApiController@todo'); # (to do) Gets all the employees fom given estate
 
 		// Units
-		Route::get('unit/{unit_id}/pet', 'PetApiController@index'); # (to do) (not tested) Gets all the pets of a particular unit
+		Route::get('unit/{unit_id}/pet', 'PetApiController@index'); # (not tested) Gets all the pets of a particular unit
 		Route::get('unit/{unit_id}/vehicle', 'VehicleApiController@index'); # (to do) Gets all the vehicles of a particular unit
 		Route::get('unit/{unit_id}/payment', 'PaymentApiController@index'); # (to do) Gets all the payments of a particular unit
 		Route::get('unit/{unit_id}/observation', 'ObservationApiController@index'); # (to do) Gets all the observations of a particular unit
@@ -48,9 +48,17 @@
 		Route::post('section/{id}', 'SectionApiController@update'); # (not tested) Edits a specified section 
  		Route::delete('section/{id}', 'SectionApiController@destroy'); # (not tested) Deletes a specified section and cascades to all dependent relations
 
-	// Unit Controller
+	// Unit routes
 		Route::get('unit/{id}', 'UnitApiController@show'); # Gets specified unit
 		Route::post('unit/{id}', 'UnitApiController@update'); # (not tested) Edits a specified unit 
 		Route::delete('unit/{id}', 'UnitApiController@destroy'); # (not tested) Deletes a specified unit and cascades to all dependent relations
 
-	
+	// Pet routes
+		Route::get('/pet/{id}', 'PetApiController@show'); # Gets specified pet
+		Route::post('pet', 'PetApiController@store'); # Creates a new pet
+		Route::post('pet/{id}', 'PetApiController@update'); # Updates specified pet
+		Route::delete('pet/{id}', 'PetApiController@destroy'); # Deletes pet
+
+	// Temporary
+		// Route::resource('picture', 'PictureApiController');
+

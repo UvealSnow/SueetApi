@@ -64,4 +64,10 @@ class UnitPolicy {
     {
         return true;
     }
+
+    // special policies
+
+        public function view_pets (User $user, Unit $unit) {
+            return true;
+        }
 }
