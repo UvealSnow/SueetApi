@@ -70,4 +70,8 @@ class UnitPolicy {
         public function view_pets (User $user, Unit $unit) {
             return true;
         }
+
+        public function view_vehicles (User $user, Unit, $unit) {
+            return true;
+        }
 }

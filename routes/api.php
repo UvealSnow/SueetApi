@@ -54,11 +54,14 @@
 		Route::delete('unit/{id}', 'UnitApiController@destroy'); # (not tested) Deletes a specified unit and cascades to all dependent relations
 
 	// Pet routes
-		Route::get('/pet/{id}', 'PetApiController@show'); # Gets specified pet
+		Route::get('pet/{id}', 'PetApiController@show'); # Gets specified pet
 		Route::post('pet', 'PetApiController@store'); # Creates a new pet
 		Route::post('pet/{id}', 'PetApiController@update'); # Updates specified pet
 		Route::delete('pet/{id}', 'PetApiController@destroy'); # Deletes pet
 
-	// Temporary
-		// Route::resource('picture', 'PictureApiController');
+	// Vehicle routes
+		Route::get('vehicle/{id}', 'VehicleApiController@show'); # Gets specified vehicle
+		Route::post('vehicle', 'VehicleApiController@store'); # Creates a new vehicle
+		Route::post('vehicle/{id}', 'VehicleApiController@update'); # Updates specified vehicle
+		Route::delete('vehicle/{id}', 'VehicleApiController@destroy'); # Deletes vehicle
 

@@ -71,7 +71,6 @@ class PetApiController extends Controller {
 		$pet = Pet::findOrFail($id);
 		if ($user->can('update', $pet)) {
 			$this->validate($request, [
-				'unit_id' => 'required|integer|exists:units,id',
 				'name' => 'string|max:255',
 				'species' => 'string|max:255',
 				'sex' => 'string|in:male,female',
@@ -79,7 +78,6 @@ class PetApiController extends Controller {
 				'image' => 'image|max:2048',
 			]);
 
-			$pet->unit_id = $request->unit_id;
 			$pet->name = $request->name;
 			$pet->species = $request->species;
 			$pet->sex = $request->sex;
