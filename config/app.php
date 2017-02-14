@@ -168,7 +168,8 @@ return [
          */
 
         Laravel\Passport\PassportServiceProvider::class,
-        Laravel\Socialite\SocialiteServiceProvider::class,
+        Laravel\Tinker\TinkerServiceProvider::class,
+        // Laravel\Socialite\SocialiteServiceProvider::class,
 
         /*
          * Application Service Providers...
