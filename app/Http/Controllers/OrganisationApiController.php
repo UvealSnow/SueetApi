@@ -40,7 +40,7 @@ class OrganisationApiController extends Controller {
     public function show($id) {
         
         $user = Auth::user();
-        $organisation = Organisation::find($id);
+        $organisation = Organisation::findOrFail($id);
 
         if  ($user->can('view', $organisation)) {
 
