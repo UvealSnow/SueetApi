@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Estate extends Model {
 
 	protected $guarded = [];
+
+	public function applications () {
+		return $this->hasMany('App\Application');
+	}
     
 	public function amenities () {
 		return $this->hasMany('App\Amenity');

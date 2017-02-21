@@ -17,8 +17,9 @@
 		Route::get('section/{section_id}/unit', 'UnitApiController@estateSection'); # Gets all the units from given estates' section
 		Route::get('estate/{estate_id}/section', 'SectionApiController@index'); # Gets all the sections from given estate
 		Route::get('estate/{estate_id}/unit', 'UnitApiController@estateIndex'); # Gets all the units from given estate
-		Route::get('estate/{estate_id}/employee', 'TodoApiController@todo'); # (to do) Gets all the employees fom given estate
- 		Route::get('estate/{estate_id}/resident', 'TodoApiController@todo'); # (to do) Gets all the employees fom given estate
+		Route::get('estate/{estate_id}/employee', 'TodoApiController@todo'); # (to do) Gets all the employees from given estate
+ 		Route::get('estate/{estate_id}/resident', 'TodoApiController@todo'); # (to do) Gets all the employees from given estate
+ 		Route::get('estate/{estate_id}/application', 'ApplicationApiController@index'); # (to do) Gets all the applications from given estate
 
 		// Units
 		Route::get('unit/{unit_id}/pet', 'PetApiController@index'); # (not tested) Gets all the pets of a particular unit
@@ -64,4 +65,17 @@
 		Route::post('vehicle', 'VehicleApiController@store'); # Creates a new vehicle
 		Route::post('vehicle/{id}', 'VehicleApiController@update'); # Updates specified vehicle
 		Route::delete('vehicle/{id}', 'VehicleApiController@destroy'); # Deletes vehicle
+
+	// Document
+		Route::get('document/{id}', 'DocumentApiController@show'); # (to do) Shows the selected document
+		Route::post('document', 'DocumentApiController@store'); # (to do)
+		Route::delete('document/{id}', 'DocumentApiController@destroy'); # (to do)
+
+	// Application
+		Route::get('application/{id}', 'ApplicationApiController@show');
+		Route::post('application', 'ApplicationApiController@store');
+		Route::delete('application/{id}', 'ApplicationApiController@destroy');
+
+	// Trace
+		Route::get('trace/{id}', 'TraceApiController@show');
 
