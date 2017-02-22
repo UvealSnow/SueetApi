@@ -4,8 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Unit extends Model
-{
+class Unit extends Model {
+
+	public function charges () {
+		return $this->hasMany('App\Charge');
+	}
     
 	public function fees () {
 		return $this->belongsToMany('App\Fee');

@@ -13,6 +13,9 @@
 	*/
 
 	// Special routes
+		// Dashboard
+		Route::get('dashboard', 'DashboardApiController@dashboard');
+
 		// Estates
 		Route::get('section/{section_id}/unit', 'UnitApiController@estateSection'); # Gets all the units from given estates' section
 		Route::get('estate/{estate_id}/section', 'SectionApiController@index'); # Gets all the sections from given estate
@@ -20,6 +23,7 @@
 		Route::get('estate/{estate_id}/employee', 'TodoApiController@todo'); # (to do) Gets all the employees from given estate
  		Route::get('estate/{estate_id}/resident', 'TodoApiController@todo'); # (to do) Gets all the employees from given estate
  		Route::get('estate/{estate_id}/application', 'ApplicationApiController@index'); # (to do) Gets all the applications from given estate
+ 		Route::get('estate/{estate_id}/fee', 'FeeApiController@index');
 
 		// Units
 		Route::get('unit/{unit_id}/pet', 'PetApiController@index'); # (not tested) Gets all the pets of a particular unit
@@ -78,4 +82,6 @@
 
 	// Trace
 		Route::get('trace/{id}', 'TraceApiController@show');
+
+	// 
 

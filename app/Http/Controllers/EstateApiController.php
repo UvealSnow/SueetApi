@@ -17,7 +17,15 @@ class EstateApiController extends Controller {
     public function index () {
         $user = Auth::user();
         if ($user->can('view_all', Estate::class)) {
-            if ($user->organisation)  return ['estates' => $user->organisation->estates];
+            if ($user->organisation) {
+                foreach ($user->organisation->estates as $estate) {
+                    $estate->manager;
+                    // $estate->picture = $estate->picture->path;
+                    if ($estate->picture != null && $estate->picture->count() > 0) $estate->picture = 'ptm';
+                    else $estate->picture = 'public/estate_placeholder.png';
+                }
+                return ['estates' => $user->organisation->estates];
+            }
             elseif ($user->employee)  return ['estates' => $user->employee->organisation->estates];
         }
         return response('Not Authorized', 401);

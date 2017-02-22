@@ -43,7 +43,7 @@ class ApplicationApiController extends Controller {
 
 	}
 
-	public function store (Request $request) {
+	public function store (Request $request) { # needs assigment of variables and save.
 
 		$user = Auth::user();
 

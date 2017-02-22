@@ -21,6 +21,9 @@ class AuthServiceProvider extends ServiceProvider
         'App\Pet' => 'App\Policies\PetPolicy',
         'App\Vehicle' => 'App\Policies\VehiclePolicy',
         'App\Application' => 'App\Policies\ApplicationPolicy',
+        'App\Fee' => 'App\Policies\FeePolicy',
+        'App\Payment' => 'App\Policies\PaymentPolicy',
+        'App\Charge' => 'App\Policies\ChargePolicy',
     ];
 
     /**
