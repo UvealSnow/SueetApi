@@ -28,6 +28,7 @@ class CreateFeesTable extends Migration
             $table->increments('id');
             $table->integer('fee_id');
             $table->integer('unit_id');
+            $table->double('special_amount')->nullable()->default(null);
         }); 
     }
 

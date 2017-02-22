@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Payment extends Model {
 
-	public function charge () {
-		return $this->belongsTo('App\Charge');
-	}
+	// public function charge () {
+	// 	return $this->belongsTo('App\Charge');
+	// }
     
 	public function unit () {
 		return $this->belongsTo('App\Unit');
