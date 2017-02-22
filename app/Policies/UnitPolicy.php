@@ -71,7 +71,7 @@ class UnitPolicy {
             return true;
         }
 
-        public function view_vehicles (User $user, Unit, $unit) {
+        public function view_vehicles (User $user, Unit $unit) {
             return true;
         }
 }
