@@ -76,12 +76,10 @@ $factory->define(App\Unit::class, function (Faker\Generator $faker) {
 });
 
 $factory->define(App\Resident::class, function (Faker\Generator $faker) {
-	static $unit_id;
 	static $estate_id;
 	static $user_id;
 
 	return [
-		'unit_id' => $unit_id,
 		'estate_id' => $estate_id,
 		'user_id' => $user_id,
 	];

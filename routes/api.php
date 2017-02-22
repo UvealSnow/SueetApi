@@ -21,7 +21,7 @@
 		Route::get('estate/{estate_id}/section', 'SectionApiController@index'); # Gets all the sections from given estate
 		Route::get('estate/{estate_id}/unit', 'UnitApiController@estateIndex'); # Gets all the units from given estate
 		Route::get('estate/{estate_id}/employee', 'TodoApiController@todo'); # (to do) Gets all the employees from given estate
- 		Route::get('estate/{estate_id}/resident', 'TodoApiController@todo'); # (to do) Gets all the employees from given estate
+ 		Route::get('estate/{estate_id}/resident', 'ResidentApiController@index'); # Gets all the employees from given estate
  		Route::get('estate/{estate_id}/application', 'ApplicationApiController@index'); # (to do) Gets all the applications from given estate
  		Route::get('estate/{estate_id}/fee', 'FeeApiController@index');
 
