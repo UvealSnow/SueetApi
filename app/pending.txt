@@ -1,0 +1,6 @@
+Pendientes
+
+- Comunidades
+- Show User (Profile)
+- Desafios
+- Crear nuevos usuarios

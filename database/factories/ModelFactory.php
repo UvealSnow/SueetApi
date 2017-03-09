@@ -92,7 +92,7 @@ $factory->define(App\Employee::class, function (Faker\Generator $faker) {
 
 	return [
 		'organisation_id' => $organisation_id,
-		'estate_id' => $estate_id,
+		'user_id' => $user_id,
 		'status' => 'active'
 	];
 });
